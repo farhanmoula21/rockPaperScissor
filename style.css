@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 20px;
+    min-height: 100vh;
+    background-color: grey;
+    color: white;
+}
+.navbar{
+    text-align: center;
+}
+
+
+.container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .scr-container{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.scr-container h3{
+    font-size: x-large;
+    padding-bottom: 10px;
+}
+.buttons{
+    display: flex;
+    gap: 2em;
+}
+
+.buttons button{
+    font-size: 40px;
+}
