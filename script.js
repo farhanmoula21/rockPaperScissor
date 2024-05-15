@@ -1,59 +1,113 @@
-const rockBtn = document.querySelector(".rock");
-const paperBtn = document.querySelector(".paper");
-const scissorBtn = document.querySelector(".scissor");
-const txt = document.querySelector(".textbox");
+//Selecting Buttons
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorBtn = document.querySelector("#scissor");
+
+
+// selecting score info and mssgs
+
+const scoreMssg = document.querySelector(".scoreMssg");
+const plrSign = document.querySelector(".plrsign")
+const compSign = document.querySelector(".compsign")
+// Selecting Scores
+const playerScore = document.querySelector(".plyr-scr");
+const compScore = document.querySelector(".comp-scr");
+
+let playerScr = 0;
+let compScr = 0;
 function getComputerChoice(){
-    const arr = ["rock", "paper", "scissor"];
+    const arr = ["✊", "✋", "✌️"];
     const opt =arr[Math.floor(Math.random() *3)];
     return opt;
 }
-const computerSelection=  getComputerChoice();
-let pChoice = "";
+let computerSelection=  getComputerChoice();
+let pChoice = '';
+
 rockBtn.addEventListener("click", function(){
-    getComputerChoice();
-  pChoice = 'rock';
-  playRound(pChoice, computerSelection);
+    pChoice = '✊';
+    computerSelection = getComputerChoice();
+    plrSign.innerText = "✊";
+    compSign.innerText = computerSelection;
+    playRound(pChoice, computerSelection);
+    checkScore(playerScr, compScr);
 })
+
+
 paperBtn.addEventListener("click", function(){
-    getComputerChoice();
-  pChoice = 'paper';
-  playRound(pChoice, computerSelection);
+    pChoice = '✋';
+    plrSign.innerText = "✋";
+    computerSelection = getComputerChoice();
+    compSign.innerText = computerSelection;
+    playRound(pChoice, computerSelection);
+    checkScore(playerScr, compScr);
+
 })
+
+
 scissorBtn.addEventListener("click", function(){
-    getComputerChoice();
-  pChoice = 'scissor';
-  playRound(pChoice, computerSelection);
+    pChoice = '✌️';
+    plrSign.innerText = "✌️";
+    playRound(pChoice, computerSelection);
+    compSign.innerText = computerSelection;
+    computerSelection = getComputerChoice();
+    checkScore(playerScr, compScr);
+
 })
+function checkScore(playerScr, compScr){
+    if(playerScr >=5){
+        alert("Player wins, Reload to play Again");
+       
+        playerScore.innerText = playerScr;
+        compScore.innerText = compScr; 
+        playerScr=0;
+        compScr = 0;
+    }
+    else if(compScr >= 5){
+        alert("Computer wins, Reload to play Again");
+       
+        playerScore.innerText = playerScr;
+        compScore.innerText = compScr;
+         playerScr=0;
+        compScr = 0;
+    }
 
-
+}
 
 function playRound(pChoice, computerSelection){
-    if(pChoice == 'rock' && computerSelection =='scissor'){
-        txt.innerHTML="Rock beats scissor, player Wins!";
+    if(pChoice == '✊' && computerSelection =='✌️'){
+        scoreMssg.innerText="Rock beats scissor, player Wins!";
+        playerScr++;
+        playerScore.innerText = playerScr;
     }
-else if(pChoice == 'paper' && computerSelection =='rock'){
-    txt.innerHTML="Paper beats Rock, player Wins!";
+else if(pChoice == '✋' && computerSelection =='✊'){
+    scoreMssg.innerHTML="Paper beats Rock, player Wins!";
+    playerScr++;
+    playerScore.innerText = playerScr;
 }
-else if(pChoice == 'scissor' && computerSelection =='paper'){
-    txt.innerHTML="Scissor beats Paper, player Wins!";
+else if(pChoice == '✌️' && computerSelection =='✋'){
+    scoreMssg.innerHTML="Scissor beats Paper, player Wins!";
+    playerScr++;
+    playerScore.innerText = playerScr;
 }
-else if(pChoice == 'scissor' && computerSelection =='rock'){
-    txt.innerHTML= "Rock beats scissor, Computer Wins!";
+else if(pChoice == '✌️' && computerSelection =='✊'){
+    scoreMssg.innerHTML= "Rock beats scissor, Computer Wins!";
+    compScr++;
+    compScore.innerText= compScr;
 }
-else if(pChoice == 'rock' && computerSelection =='paper'){
-txt.innerHTML="Paper beats Rock, computer Wins!";
+else if(pChoice == '✊' && computerSelection =='✋'){
+scoreMssg.innerHTML="Paper beats Rock, computer Wins!";
+compScr++;
+compScore.innerText= compScr;
 }
-else if(pChoice == 'paper' && computerSelection =='scissor'){
-txt.innerHTML="Scissor beats Paper, Computer Wins!";
+else if(pChoice == '✋' && computerSelection =='✌️'){
+scoreMssg.innerHTML="Scissor beats Paper, Computer Wins!";
+compScr++;
+compScore.innerText= compScr;
 }
 else if(pChoice == computerSelection){
-    txt.innerHTML= `Its a tie!`;
+    scoreMssg.innerHTML= `Its a tie!`;
 }
 
 }
 
 
-// function playGame(){
-//         playRound(playerChoice,computerSelection);
-//     }
-// playGame();

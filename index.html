@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>RockPaperScissors</title>
 </head>
 <body>
-    <div class="textbox">Select Your Option</div>
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissor">Scissor</button>
-
+   <div class="navbar"><H1>ROCK PAPER SCISSORS</H1></div>
+   <div class="container">
+    <div class="score-info"><h2>Choose Your Weapon</h2></div>
+    <div class="scoreMssg"><h3>First to score 5 points Wins the game</h3></div>
+    <div class="scr-container">
+        <div class="playerSign"><h3 class="plrsign">?</h3> <p>Player: <span class="plyr-scr">0</span></p></div>
+        <div class="computerSign"><h3 class="compsign">?</h3><p>Computer: <span class="comp-scr">0</span></p></div>
+    </div>
+    <div class="buttons">
+        <button id="rock">✊</button>
+        <button id="paper">✋</button>
+        <button id="scissor">✌️</button>
+    </div>
+   </div>
     <script src="script.js"></script>
 </body>
 </html>
